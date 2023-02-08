@@ -50,6 +50,9 @@ def ngram(n, lst):
   #zip関数＝２つのリスト、タプル、辞書をくっつける　https://camp.trainocate.co.jp/magazine/python-zip/
   return list(zip(*[lst[i:] for i in range(n)]))
 
+def ngram_0208(txt, n):
+  return list(zip(*[txt[i:] for i in range(n)]))
+
 str = 'I am an NLPer'
 
 words_bi_gram = ngram(2, str.split())
@@ -59,6 +62,7 @@ print('単語bi-gram:', words_bi_gram)
 # print('文字bi-gram:', chars_bi_gram)
 
 #06
+  #list(zip("abc" "de")) →[ad, be]
 def ngram_retry(txt, n):
   return list((zip(*[txt[i:] for i in range(n)])))
 txt1 = 'paraparaparadise'
@@ -71,3 +75,16 @@ product_set = bigram_txt1 & bigram_txt2
 print("和集合 ", sum_set)
 print("差集合 ", difference_set)
 print("積集合 ", product_set)
+
+#09
+  #def はreturn忘れずに！（ないとNoneが返される）
+  #リスト→文字列は"".join(リスト) / 文字列→リストはlist(文字列)
+import random
+def shuffle(sentence9):
+  result=[]
+  for word in sentence9.split():
+    if len(word) > 4:
+      word = word[:1] + "".join(random.sample(list(word[1:-1]), len(word[1:-1]))) + word[-1]
+    result.append(word)
+  return " ".join(result)
+print(shuffle("I couldn't believe that I could actually understand what I was reading : the phenomenal power of the human mind ."))
