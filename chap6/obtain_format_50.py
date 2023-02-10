@@ -1,12 +1,13 @@
-# URL: https://amaru-ai.com/entry/2022/10/12/202559
+##### データ読み込み、抽出 #####
+# 解答URL: https://amaru-ai.com/entry/2022/10/12/202559
+# 解答URL :https://kakedashi-engineer.appspot.com/2020/05/09/nlp100-ch6/
+
 # 50 データの入手・整形
  #パス指定時に\ →\\にする。\だとエスケープ文字と認識されてしまうため
  #Pythonの外部ライブラリがVSCodeでcould not be resolvedとなる時の対処法→https://maasaablog.com/integrated-development-environment/visual-studio-code/4437/
  #pip install scikit-learn
  #組み込み関数、モジュール、パッケージ　https://www.wakuwakubank.com/posts/260-python-basic-function/
  #モジュール化⇒OOP　https://takun-physics.net/12376/
-
-
 
 import sys,os
 # sys.path.append('モジュールをインストールしたディレクトリ')
@@ -35,12 +36,15 @@ df_train, df_valid_test = train_test_split(df,test_size=0.2, shuffle=True, strat
 df_valid, df_test = train_test_split(df_valid_test ,test_size=0.5, shuffle=True, stratify=df_valid_test["CATEGORY"]) 
     #df: (13340, 8)⇒df_train: (10672, 8) / df_valid: (1334, 8) / df_test: (1334, 8)
 
-print(df_train['CATEGORY'].value_counts())
-print(df_valid['CATEGORY'].value_counts())
-print(df_test['CATEGORY'].value_counts())
+if __name__ == "__main__":
+    print(df_train['CATEGORY'].value_counts())
+    print(df_valid['CATEGORY'].value_counts())
+    print(df_test['CATEGORY'].value_counts())
 
 # Dataframe→csv : df.to_csv
- # index(行名), header(列名)
+# index(行名), header(列名)
 df_train.to_csv('chap6\\csv\\df_train.txt', sep="\t", index = False)
 df_valid.to_csv('chap6\\csv\\df_valid.txt', sep="\t", index = False)
 df_test.to_csv('chap6\\csv\\df_test.txt', sep="\t", index = False)
+
+
